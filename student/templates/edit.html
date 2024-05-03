@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<style>
+    form{
+        background-color: rgb(231, 125, 125);
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        text-align: center;
+        border-radius: 25px ;
+        border-style: solid;
+        padding: 12px ;
+        margin-top: 70px;
+        opacity: 0.9;
+    }
+    label{
+        
+        font-size: 16px;
+        margin-right: 10px;
+        flex-basis: 150px;
+        
+    }
+    input,select{
+        padding: 5px;
+        margin-right: 10px;
+        flex-grow: 1;
+    }
+    .form-group {
+    display: flex;
+    align-items: center;
+    }
+    button{
+        margin-top: 15px;
+        background-color: rgb(74, 233, 145);
+        
+    }
+    body{
+    background-image: url("{% static 'images/img1.avif' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+    textarea{
+    padding: 5px;
+    margin-right: 10px;
+    flex-grow: 1;
+    }
+</style>
+<body>
+    <form action="{% url 'edit' data.id %}" method="post">
+        {% csrf_token %}
+        <h1>Update Data</h1>
+        <div class="form-group">
+            <label>First name</label>
+            <input name="first_name" value="{{data.first_name}}" required><br><br>
+        </div>
+        <div class="form-group">
+            <label>Last name</label>
+            <input name="last_name" value="{{data.last_name}}" required><br><br>
+        </div>
+        <div class="form-group">
+            <label>Phone number</label>
+            <input name="phonenumber" type="number" value="{{data.phonenumber}}" required><br><br>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input name="email" type="email" value="{{data.email}}" required><br><br>
+        </div>
+        <div class="form-group">
+            <label>course</label>
+            <input name="course" value="{{data.course}}" required><br><br>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <textarea name="address"  required>{{data.address}}</textarea><br><br>
+        </div>
+        
+
+        <button type="submit">Update</button>
+        <button type="submit">Back</button>
+
+    </form>
+</body>
+</html>
